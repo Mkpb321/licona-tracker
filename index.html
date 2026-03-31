@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Leseplan April–Juni 2026</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #122033;
+      --muted: #5f6f84;
+      --line: #d9e2ec;
+      --primary: #1f5eff;
+      --primary-soft: #e8f0ff;
+      --good: #147a4b;
+      --good-soft: #eaf7f0;
+      --warn: #b26a00;
+      --warn-soft: #fff4df;
+      --danger: #b42318;
+      --danger-soft: #feefee;
+      --shadow: 0 10px 24px rgba(13, 38, 76, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { min-height: 100vh; }
+
+    .app {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 16px 14px 28px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .titlewrap h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .titlewrap p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .iconbtn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .status.good { background: var(--good-soft); color: var(--good); }
+    .status.warn { background: var(--warn-soft); color: var(--warn); }
+    .status.danger { background: var(--danger-soft); color: var(--danger); }
+    .status.neutral { background: var(--primary-soft); color: var(--primary); }
+
+    .big {
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin: 10px 0 2px;
+      font-weight: 800;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fbfdff;
+    }
+
+    .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+
+    .value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .help {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .inputrow {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .inline {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 0 14px;
+      font-size: 1rem;
+      color: var(--text);
+      outline: none;
+    }
+
+    input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
+
+    button.primary,
+    button.secondary {
+      height: 46px;
+      border-radius: 14px;
+      border: none;
+      padding: 0 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    button.primary { background: var(--primary); color: white; }
+    button.secondary { background: var(--primary-soft); color: var(--primary); }
+
+    .stack > * + * { margin-top: 12px; }
+
+    .progresshead {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .progresshead .name {
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .progresshead .num {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .bar {
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: #e9eef5;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 0.25s ease;
+      background: var(--primary);
+    }
+
+    .fill.good { background: var(--good); }
+
+    .smallnote {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      padding: 4px 0 10px;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 22, 39, 0.48);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 12px;
+      z-index: 20;
+    }
+
+    .overlay.open { display: flex; }
+
+    .sheet {
+      width: 100%;
+      max-width: 460px;
+      background: white;
+      border-radius: 22px 22px 14px 14px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      max-height: 86vh;
+      overflow: auto;
+    }
+
+    .sheet h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sheet p, .sheet li {
+      color: #344255;
+      line-height: 1.5;
+      font-size: 0.94rem;
+    }
+
+    .sheet ul {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+
+    .sheetclose {
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 360px) {
+      .grid2 { grid-template-columns: 1fr; }
+      .inputrow { grid-template-columns: 1fr; }
+      .big { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="topbar">
+      <div class="titlewrap">
+        <h1>Leseplan</h1>
+        <p>4. April bis 30. Juni 2026 · Seiten 17–641</p>
+      </div>
+      <button class="iconbtn" id="infoBtn" aria-label="Info öffnen">i</button>
+    </div>
+
+    <section class="card hero">
+      <div class="row">
+        <div class="status neutral" id="statusBadge">Plan wird geladen</div>
+      </div>
+      <div class="big" id="todayPages">–</div>
+      <div class="sub" id="todaySub">–</div>
+
+      <div class="grid2">
+        <div class="metric">
+          <div class="label">Heute</div>
+          <div class="value" id="todayRange">–</div>
+          <div class="help" id="todayHelp">–</div>
+        </div>
+        <div class="metric">
+          <div class="label">Diese Woche</div>
+          <div class="value" id="weekRange">–</div>
+          <div class="help" id="weekHelp">–</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Fortschritt speichern</div>
+      <div class="inputrow">
+        <input id="pageInput" type="number" inputmode="numeric" min="16" max="641" placeholder="Bis Seite …" />
+        <button class="primary" id="saveBtn">Speichern</button>
+      </div>
+      <div class="inputrow" style="margin-top:8px;">
+        <button class="secondary" id="saveTargetBtn" style="grid-column: 1 / -1;">Auf heutiges Soll setzen</button>
+      </div>
+      <div class="smallnote" id="saveNote">Gib die letzte gelesene Seite ein oder speichere direkt das heutige Soll.</div>
+    </section>
+
+    <section class="card stack">
+      <div>
+        <div class="progresshead">
+          <div class="name">Soll bis heute</div>
+          <div class="num" id="idealPct">0%</div>
+        </div>
+        <div class="bar"><div class="fill" id="idealBar"></div></div>
+      </div>
+
+      <div>
+        <div class="progresshead">
+          <div class="name">Tatsächlich gelesen</div>
+          <div class="num" id="actualPct">0%</div>
+        </div>
+        <div class="bar"><div class="fill good" id="actualBar"></div></div>
+      </div>
+
+      <div class="smallnote" id="progressNote">–</div>
+    </section>
+
+    <div class="footer">Speichert lokal im Browser.</div>
+  </main>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="sheet">
+      <h2>So nutzt du die App</h2>
+      <p>Diese App plant dein Buch von Seite 17 bis 641 für den Zeitraum vom 4. April bis 30. Juni 2026. Das Lesesystem ist bewusst simpel: 6 Tage lesen, 1 Tag Puffer.</p>
+      <ul>
+        <li><strong>Bis Seite …</strong>: Trage ein, bis wohin du wirklich gelesen hast.</li>
+        <li><strong>Auf heutiges Soll setzen</strong>: Speichert direkt den Stand, den du heute laut Plan erreichen solltest.</li>
+        <li><strong>Heute</strong> zeigt dir: gelesen bis hier / sollte bis hier.</li>
+        <li><strong>Diese Woche</strong> zeigt den Stand deiner aktuellen Plan-Woche.</li>
+        <li>Ein Puffertag ist kein Scheitern. Er ist eingeplant.</li>
+        <li><strong>Never miss twice</strong>: Ein ausgelassener Lesetag ist noch okay. Zwei hintereinander werden schnell zum Muster. Dann sofort klein wieder einsteigen.</li>
+        <li><strong>Mindestseitenzahl</strong>: Wenn es zäh ist, lies wenigstens 2 Seiten. Hauptsache, du bleibst drin.</li>
+      </ul>
+      <button class="primary sheetclose" id="closeOverlay">Schließen</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const CONFIG = {
+        startPage: 17,
+        endPage: 641,
+        minPages: 2,
+        startDate: '2026-04-04',
+        endDate: '2026-06-30',
+        storageKey: 'leseplan_v1_read_to_page'
+      };
+
+      const totalPages = CONFIG.endPage - CONFIG.startPage + 1;
+      const MS_PER_DAY = 86400000;
+
+      const el = {
+        statusBadge: document.getElementById('statusBadge'),
+        todayPages: document.getElementById('todayPages'),
+        todaySub: document.getElementById('todaySub'),
+        todayRange: document.getElementById('todayRange'),
+        todayHelp: document.getElementById('todayHelp'),
+        weekRange: document.getElementById('weekRange'),
+        weekHelp: document.getElementById('weekHelp'),
+        pageInput: document.getElementById('pageInput'),
+        saveBtn: document.getElementById('saveBtn'),
+        saveTargetBtn: document.getElementById('saveTargetBtn'),
+        saveNote: document.getElementById('saveNote'),
+        idealBar: document.getElementById('idealBar'),
+        actualBar: document.getElementById('actualBar'),
+        idealPct: document.getElementById('idealPct'),
+        actualPct: document.getElementById('actualPct'),
+        progressNote: document.getElementById('progressNote'),
+        infoBtn: document.getElementById('infoBtn'),
+        overlay: document.getElementById('overlay'),
+        closeOverlay: document.getElementById('closeOverlay')
+      };
+
+      function parseDate(str) {
+        return new Date(str + 'T12:00:00');
+      }
+
+      function formatDate(date) {
+        return new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit' }).format(date);
+      }
+
+      function clamp(num, min, max) {
+        return Math.min(max, Math.max(min, num));
+      }
+
+      function pct(part, total) {
+        if (!total) return 0;
+        return Math.round((part / total) * 100);
+      }
+
+      function getStoredReadTo() {
+        const raw = localStorage.getItem(CONFIG.storageKey);
+        if (!raw) return CONFIG.startPage - 1;
+        const val = Number(raw);
+        if (Number.isNaN(val)) return CONFIG.startPage - 1;
+        return clamp(Math.floor(val), CONFIG.startPage - 1, CONFIG.endPage);
+      }
+
+      function setStoredReadTo(page) {
+        const clean = clamp(Math.floor(page), CONFIG.startPage - 1, CONFIG.endPage);
+        localStorage.setItem(CONFIG.storageKey, String(clean));
+        return clean;
+      }
+
+      function buildSchedule() {
+        const start = parseDate(CONFIG.startDate);
+        const end = parseDate(CONFIG.endDate);
+        const totalDays = Math.floor((end - start) / MS_PER_DAY) + 1;
+        const entries = [];
+        const readingIndices = [];
+
+        for (let i = 0; i < totalDays; i++) {
+          const date = new Date(start.getTime() + i * MS_PER_DAY);
+          const isBufferDay = (i % 7 === 6);
+          entries.push({
+            index: i,
+            date,
+            isBufferDay,
+            readingOrder: null,
+            targetReadTo: CONFIG.startPage - 1,
+            prevReadingTarget: CONFIG.startPage - 1,
+            dailyPages: 0,
+            weekIndex: Math.floor(i / 7)
+          });
+          if (!isBufferDay) readingIndices.push(i);
+        }
+
+        const totalReadingDays = readingIndices.length;
+        let previousTarget = CONFIG.startPage - 1;
+
+        readingIndices.forEach((entryIndex, idx) => {
+          const readingOrder = idx + 1;
+          const targetReadTo = (CONFIG.startPage - 1) + Math.round((readingOrder * totalPages) / totalReadingDays);
+          const dailyPages = targetReadTo - previousTarget;
+          entries[entryIndex].readingOrder = readingOrder;
+          entries[entryIndex].targetReadTo = targetReadTo;
+          entries[entryIndex].prevReadingTarget = previousTarget;
+          entries[entryIndex].dailyPages = dailyPages;
+          previousTarget = targetReadTo;
+        });
+
+        for (let i = 0; i < entries.length; i++) {
+          if (entries[i].isBufferDay) {
+            const prev = i > 0 ? entries[i - 1].targetReadTo : CONFIG.startPage - 1;
+            entries[i].targetReadTo = prev;
+            entries[i].prevReadingTarget = prev;
+            entries[i].dailyPages = 0;
+          }
+        }
+
+        return entries;
+      }
+
+      const schedule = buildSchedule();
+      const startDate = parseDate(CONFIG.startDate);
+      const endDate = parseDate(CONFIG.endDate);
+
+      function getTodayEntry() {
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0);
+        if (today < startDate) return { entry: schedule[0], phase: 'before' };
+        if (today > endDate) return { entry: schedule[schedule.length - 1], phase: 'after' };
+        const idx = Math.floor((today - startDate) / MS_PER_DAY);
+        return { entry: schedule[idx], phase: 'during' };
+      }
+
+      function getLatestScheduledTargetIndex(entry) {
+        if (!entry) return 0;
+        if (!entry.isBufferDay) return entry.index;
+        return Math.max(0, entry.index - 1);
+      }
+
+      function getMissLevel(readTo, todayEntry) {
+        const scheduledIndex = getLatestScheduledTargetIndex(todayEntry);
+        const latest = schedule[scheduledIndex];
+        const prevReading = findPreviousReadingEntry(latest.index);
+
+        if (readTo >= latest.targetReadTo) return 0;
+        if (!prevReading) return 1;
+        if (readTo >= prevReading.targetReadTo) return 1;
+        return 2;
+      }
+
+      function findPreviousReadingEntry(index) {
+        for (let i = index - 1; i >= 0; i--) {
+          if (!schedule[i].isBufferDay) return schedule[i];
+        }
+        return null;
+      }
+
+      function getWeekBounds(entry) {
+        const weekStartIndex = entry.weekIndex * 7;
+        const weekEndIndex = Math.min(weekStartIndex + 6, schedule.length - 1);
+        return {
+          start: schedule[weekStartIndex],
+          end: schedule[weekEndIndex]
+        };
+      }
+
+      function setStatus(className, text) {
+        el.statusBadge.className = 'status ' + className;
+        el.statusBadge.textContent = text;
+      }
+
+      function render() {
+        const readTo = getStoredReadTo();
+        const { entry, phase } = getTodayEntry();
+        const week = getWeekBounds(entry);
+        const idealToday = entry.targetReadTo;
+        const actualPagesRead = Math.max(0, readTo - (CONFIG.startPage - 1));
+        const idealPagesRead = Math.max(0, idealToday - (CONFIG.startPage - 1));
+        const missLevel = getMissLevel(readTo, entry);
+
+        let todayNeed = Math.max(0, idealToday - readTo);
+        let todayHeadline = '';
+        let todaySub = '';
+
+        if (phase === 'before') {
+          todayHeadline = 'Start am 04.04.';
+          todaySub = 'Bis dahin musst du noch nichts lesen.';
+          setStatus('neutral', 'Noch nicht gestartet');
+        } else if (phase === 'after') {
+          todayHeadline = readTo >= CONFIG.endPage ? 'Fertig' : (CONFIG.endPage - readTo) + ' Seiten offen';
+          todaySub = readTo >= CONFIG.endPage ? 'Du hast dein Ziel erreicht.' : 'Plan vorbei – jetzt sauber abschließen.';
+          setStatus(readTo >= CONFIG.endPage ? 'good' : 'warn', readTo >= CONFIG.endPage ? 'Ziel erreicht' : 'Endspurt');
+        } else if (entry.isBufferDay) {
+          todayHeadline = todayNeed > 0 ? todayNeed + ' Seiten aufholen' : 'Puffertag';
+          todaySub = todayNeed > 0 ? 'Heute keine Pflicht. Du kannst den Abstand auffangen.' : 'Du bist im Soll. Heute ist frei.';
+          if (todayNeed > 0) {
+            setStatus(missLevel >= 2 ? 'danger' : 'warn', missLevel >= 2 ? 'Nicht zweimal auslassen' : 'Puffer aktiv');
+          } else {
+            setStatus('good', 'Im Plan');
+          }
+        } else {
+          todayHeadline = todayNeed === 0 ? 'Heute geschafft' : todayNeed + ' Seiten heute';
+          todaySub = 'Mindestziel: ' + CONFIG.minPages + ' Seiten. Idealziel: ' + entry.dailyPages + ' Seiten.';
+          if (missLevel === 0) setStatus('good', 'Im Plan');
+          if (missLevel === 1) setStatus('warn', 'Einmal verpasst – heute wieder rein');
+          if (missLevel >= 2) setStatus('danger', 'Warnung: zweimal verpasst');
+        }
+
+        const weekCurrentTarget = entry.targetReadTo;
+        const weekEndTarget = week.end.targetReadTo;
+
+        el.todayPages.textContent = todayHeadline;
+        el.todaySub.textContent = todaySub;
+        el.todayRange.textContent = readTo + ' / ' + idealToday;
+        el.todayHelp.textContent = entry.isBufferDay
+          ? 'Gelesen bis hier / sollte bis hier bis ' + formatDate(entry.date)
+          : 'Gelesen bis hier / sollte bis hier';
+        el.weekRange.textContent = readTo + ' / ' + weekCurrentTarget;
+        el.weekHelp.textContent = 'Diese Plan-Woche endet bei ' + weekEndTarget + ' · ' + formatDate(week.start.date) + '–' + formatDate(week.end.date);
+
+        const idealPercent = pct(idealPagesRead, totalPages);
+        const actualPercent = pct(actualPagesRead, totalPages);
+
+        el.idealBar.style.width = idealPercent + '%';
+        el.actualBar.style.width = actualPercent + '%';
+        el.idealPct.textContent = idealPercent + '%';
+        el.actualPct.textContent = actualPercent + '%';
+
+        let note = 'Du hast ' + actualPagesRead + ' von ' + totalPages + ' Seiten gelesen.';
+        if (readTo >= idealToday) {
+          note += ' Du liegst ' + (readTo - idealToday) + ' Seiten vor oder genau im Soll.';
+        } else {
+          note += ' Dir fehlen ' + (idealToday - readTo) + ' Seiten bis zum heutigen Soll.';
+        }
+        el.progressNote.textContent = note;
+
+        el.pageInput.value = readTo >= CONFIG.startPage ? String(readTo) : '';
+      }
+
+      function saveManual() {
+        const raw = Number(el.pageInput.value);
+        if (Number.isNaN(raw)) {
+          el.saveNote.textContent = 'Bitte eine gültige Seitenzahl eingeben.';
+          return;
+        }
+        const clean = setStoredReadTo(raw);
+        el.saveNote.textContent = 'Gespeichert: bis Seite ' + clean + '.';
+        render();
+      }
+
+      function saveTodayTarget() {
+        const { entry } = getTodayEntry();
+        const target = entry.targetReadTo;
+        const clean = setStoredReadTo(target);
+        el.saveNote.textContent = 'Gespeichert: auf heutiges Soll gesetzt (' + clean + ').';
+        render();
+      }
+
+      el.saveBtn.addEventListener('click', saveManual);
+      el.saveTargetBtn.addEventListener('click', saveTodayTarget);
+      el.pageInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') saveManual();
+      });
+
+      el.infoBtn.addEventListener('click', function () {
+        el.overlay.classList.add('open');
+        el.overlay.setAttribute('aria-hidden', 'false');
+      });
+
+      el.closeOverlay.addEventListener('click', function () {
+        el.overlay.classList.remove('open');
+        el.overlay.setAttribute('aria-hidden', 'true');
+      });
+
+      el.overlay.addEventListener('click', function (e) {
+        if (e.target === el.overlay) {
+          el.overlay.classList.remove('open');
+          el.overlay.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
