@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+prompt:
+--------------------------------------------------
+
+viel platzsparender
+
+lösche folgendes:
+Fortschritt sichern
+Noch nicht gestartet
+Gib die letzte gelesene Seite ein oder speichere direkt das heutige Soll.
+Start am 04.04.
+Bis dahin musst du noch nichts lesen.
+Du hast 0 von 625 Seiten gelesen. Dir fehlen 8 Seiten bis zum heutigen Soll.
+
+das interessiert mich alles nicht
+
+zusätzlich die ganze karte ""Start am 04.04."" weg und die info einfach kompakt in die karte wo man seine eingibt hinein. als text wo jetzt "Gib die letzte gelesene Seite ein oder speichere direkt das heutige Soll." steht
+
+jetzt steht 
+Heute
+16 / 24
+Diese Woche
+8 Seiten (da soll auch stehen von wievielen diese woche)
+
+dieso woche kann unmöglich kleiner sein als heute und da heute noch nicht 4.4. ist muss ich heute eigentlich garnichts lesen. da läuft was falsch in der logik
+--------------------------------------
